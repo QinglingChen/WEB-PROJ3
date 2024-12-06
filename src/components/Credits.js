@@ -17,10 +17,11 @@ const Credits = (props) => {
 
   //fetch API data from fake
   useEffect( () => {
-    fetch('https://jsonplaceholder.typicode.com/posts')
+    //fetch('https://jsonplaceholder.typicode.com/posts')
+    fetch('https://johnnylaicode.github.io/api/credits.json')
       .then(response => response.json())  // analysis JSON data
       .then(data => {
-        setCredits(data.slice(0, 5)); // fetch the first five data
+        setCredits(data.slice(0, 10)); // fetch the first ten data
         //setLoading(false); // set loading statement to be false
       })
       .catch(error=>{
@@ -29,7 +30,7 @@ const Credits = (props) => {
 
   },[]);
 
-  //nwe function to update credit
+  //new function to update credit
   const addCredit = () => {
     const newCredit = {
       title: description,
@@ -40,6 +41,8 @@ const Credits = (props) => {
     setCredits([newCredit,...credits]); // Add the new credit at the beginning of the credits list
     setAmount('');  // Clear description input field
     setDescription(''); // Clear amount input field
+    //this.props.addCredit(newCredit); //
+    props.addCredit(newCredit); //
   };
 
   //return react
